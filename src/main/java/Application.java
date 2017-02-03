@@ -1,5 +1,4 @@
 import com.martinez.service.CustomerService;
-import com.martinez.service.CustomerServiceImpl;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,6 +10,8 @@ public class Application {
 
         //CustomerService service = new CustomerServiceImpl();
         CustomerService service = applicationContext.getBean("customerService", CustomerService.class);
+
+        System.out.println(service);
 
         System.out.println(service.findAll().get(0).getFirstName());
     }
