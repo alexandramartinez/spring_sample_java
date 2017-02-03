@@ -5,15 +5,24 @@ import com.martinez.repository.CustomerRepository;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("customerService")
 public class CustomerServiceImpl implements CustomerService {
 
     private CustomerRepository customerRepository;
 
+    public CustomerServiceImpl(){}
+
+    @Autowired
     public CustomerServiceImpl(CustomerRepository customerRepository) {
+        System.out.println("Using constructor injection");
         this.customerRepository = customerRepository;
     }
 
     public void setCustomerRepository(CustomerRepository customerRepository) {
+        System.out.println("Using setter injection");
         this.customerRepository = customerRepository;
     }
 
