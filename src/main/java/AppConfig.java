@@ -1,3 +1,5 @@
+import com.martinez.repository.CustomerRepository;
+import com.martinez.repository.HibernateCustomerRepositoryImpl;
 import com.martinez.service.CustomerService;
 import com.martinez.service.CustomerServiceImpl;
 
@@ -9,6 +11,13 @@ public class AppConfig {
 
     @Bean(name = "customerService")
     public CustomerService getCustomerService() {
-        return new CustomerServiceImpl();
+        CustomerServiceImpl service = new CustomerServiceImpl();
+        service.setCustomerRepository(getCustomerRepository());
+        return service;
+    }
+
+    @Bean(name = "customerRepository")
+    public CustomerRepository getCustomerRepository() {
+        return new HibernateCustomerRepositoryImpl();
     }
 }
